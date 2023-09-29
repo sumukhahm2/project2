@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import React,{Fragment,useState} from 'react'
 import './App.css';
-
-function App() {
+import ProductEntryForm from './Component/ProductEntryForm';
+import Navigation from './Component/Navigattion';
+import Display from './Component/Display';
+const App=()=> {
+ const [submittedData,setSubmittedData]=useState([])
+  const dataHandler=(item)=>{
+    setSubmittedData((prev)=>{
+      return [
+        ...prev,
+        item
+      ]
+    })
+  }
+  console.log(submittedData)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+     <Fragment>
+      <header>
+      <Navigation/>
+      <ProductEntryForm postData={dataHandler}/>
       </header>
-    </div>
+      <main>
+        <Display data={submittedData}/>
+      </main>
+     </Fragment>
   );
 }
 
