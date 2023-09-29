@@ -1,7 +1,8 @@
-import React,{Fragment,useRef,useState} from 'react'
+import React,{Fragment,useRef,useContext} from 'react'
 import {Button,Form,Container,Row,Col} from 'react-bootstrap'
+import Context from './Context'
 const ProductEntryForm=(props)=>{
-   
+   const ctx=useContext(Context)
     const shoeRef=useRef()
     const descriptionRef=useRef()
     const priceRef=useRef()
@@ -11,7 +12,7 @@ const ProductEntryForm=(props)=>{
 
     const formSubmitHandler=async(event)=>{
      event.preventDefault()
-   props.postData({
+   ctx.addItem({
         name:shoeRef.current.value,
         description:descriptionRef.current.value,
         price:priceRef.current.value,

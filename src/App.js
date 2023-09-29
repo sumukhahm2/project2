@@ -1,27 +1,19 @@
-import React,{Fragment,useState} from 'react'
+import React,{Fragment,useState,useContext} from 'react'
 import './App.css';
 import ProductEntryForm from './Component/ProductEntryForm';
 import Navigation from './Component/Navigattion';
 import Display from './Component/Display';
+import Context from './Component/Context';
 const App=()=> {
- const [submittedData,setSubmittedData]=useState([])
-  const dataHandler=(item)=>{
-    setSubmittedData((prev)=>{
-      return [
-        ...prev,
-        item
-      ]
-    })
-  }
-  console.log(submittedData)
+
   return (
      <Fragment>
       <header>
       <Navigation/>
-      <ProductEntryForm postData={dataHandler}/>
+      <ProductEntryForm />
       </header>
       <main>
-        <Display data={submittedData}/>
+        <Display />
       </main>
      </Fragment>
   );
